@@ -5,18 +5,24 @@ import SearchBar from "./components/searchBar";
 import youtube from './api/youtube';
 
 class App extends Component {
-  onTermSubmit = (term) => {
+  state = {videos : [] }
+
+  onTermSubmit = async (term) => {
     console.log(term);
-    youtube.get('/search', {
+    const response = await youtube.get('/search', {
       parms:{
         q:term
       }
     });
+    console.log(response.data.items);
+    const youtubeResponse = response.data.items;
+    this.setState({videos: youtubeResponse});
   };
   render() {
     return (
       <div className="ui container">
         <SearchBar onTermSubmit = {this.onTermSubmit} />
+        <p>Youtube sent {this.state.videos.length} videos back !</p>
       </div>
     );
   }
