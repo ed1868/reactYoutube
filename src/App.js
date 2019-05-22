@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import SearchBar from "./components/searchBar";
 import youtube from './api/youtube';
+import VideoList from "./components/videoList";
 
 class App extends Component {
   state = {videos : [] }
@@ -23,6 +24,7 @@ class App extends Component {
       <div className="ui container">
         <SearchBar onTermSubmit = {this.onTermSubmit} />
         <p>Youtube sent {this.state.videos.length} videos back !</p>
+        <VideoList videos= {this.state.videos}/>
       </div>
     );
   }
