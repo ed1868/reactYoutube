@@ -4,7 +4,9 @@ import VideoItem from './videoItem';
 export default class videoList extends Component {
   render() {
     const renderedList = this.props.videos.map((video) => {
-      return <VideoItem />
+
+      console.log(video.snippet.title);
+      return <VideoItem video = {video}/>
     })
     return (
       <div>
